@@ -1,6 +1,5 @@
 // Next, React
 import { FC, useEffect, useState } from "react";
-import Link from "next/link";
 
 // Wallet
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
@@ -8,14 +7,12 @@ import { useWallet, useConnection } from "@solana/wallet-adapter-react";
 // Components
 import { RequestAirdrop } from "../../components/RequestAirdrop";
 
-import pkg from "../../../package.json";
-
 // Store
 import useUserSOLBalanceStore from "../../stores/useUserSOLBalanceStore";
 import { CreateToken } from "components/CreateToken";
-import { UpdateMetadata } from "components/UpdateMetadata";
+import { MintNFT } from "components/CreateNft";
 
-export const HomeView: FC = ({}) => {
+export const AdvancedView: FC = ({}) => {
   const wallet = useWallet();
   const { connection } = useConnection();
 
@@ -38,7 +35,7 @@ export const HomeView: FC = ({}) => {
         <div className="text-center">
           <RequestAirdrop my-2 />
           {wallet && <p>SOL Balance: {(balance || 0).toLocaleString()}</p>}
-          <CreateToken />
+          <MintNFT />
         </div>
       </div>
     </div>
