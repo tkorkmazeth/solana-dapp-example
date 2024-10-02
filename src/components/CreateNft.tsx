@@ -75,6 +75,7 @@ export const MintNFT: FC = () => {
       .add(
         mintFromCandyMachineV2(umi, {
           candyMachine: loadedCandyMachine.publicKey,
+          //@ts-ignore
           mintAuthority: loadedCandyMachine.mintAuthority,
           nftOwner,
           nftMint,
