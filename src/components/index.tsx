@@ -5,7 +5,6 @@ export { CreateToken } from "./CreateToken";
 export { AppBar } from "./AppBar";
 export { ContentContainer } from "./ContentContainer";
 export { CreateAccountError } from "./CreateAccountError";
-export { MintNFT } from "./CreateNft";
 export { Footer } from "./Footer";
 export { RequestAirdrop } from "./RequestAirdrop";
 export { SendTransaction } from "./SendTransaction";
