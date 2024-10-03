@@ -26,7 +26,7 @@
     "@nfteyez/sol-rayz-react": "^0.10.2",
     "@noble/ed25519": "^1.7.1",
     "@solana/pay": "^0.2.5",
-    "@solana/wallet-adapter-base": "^0.9.22",
+    "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.32",
     "@solana/wallet-adapter-react-ui": "^0.9.31",
     "@solana/wallet-adapter-wallets": "^0.19.16",
