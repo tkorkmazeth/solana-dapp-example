@@ -1,9 +1,10 @@
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
 // Concatenates classes into a single className string
-const cn = (...args: string[]) => args.join(' ');
+const cn = (...args: string[]) => args.join(" ");
 
-const formatDate = (date: string) => format(new Date(date), 'MM/dd/yyyy h:mm:ss');
+const formatDate = (date: string) =>
+  format(new Date(date), "MM/dd/yyyy h:mm:ss");
 
 /**
  * Formats number as currency string.
@@ -11,7 +12,7 @@ const formatDate = (date: string) => format(new Date(date), 'MM/dd/yyyy h:mm:ss'
  * @param number Number to format.
  */
 const numberToCurrencyString = (number: number) =>
-    number.toLocaleString('en-US');
+  number.toLocaleString("en-US");
 
 /**
  * Returns a number whose value is limited to the given range.
@@ -26,9 +27,12 @@ const numberToCurrencyString = (number: number) =>
  */
 const clamp = (current, min, max) => Math.min(Math.max(current, min), max);
 
-export {
-    cn,
-    formatDate,
-    numberToCurrencyString,
-    clamp,
+export const sleep = (ms: number): Promise<void> => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 };
+
+export const shortenAddress = (address: string, chars = 4): string => {
+  return `${address.slice(0, chars)}...${address.slice(-chars)}`;
+};
+
+export { cn, formatDate, numberToCurrencyString, clamp };

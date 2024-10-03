@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@bundlr-network/client": "^0.11.17",
+    "@coral-xyz/anchor": "^0.30.1",
     "@headlessui/react": "^2.1.8",
     "@heroicons/react": "^1.0.5",
     "@metaplex-foundation/js": "^0.20.1",
@@ -26,6 +27,7 @@
     "@nfteyez/sol-rayz-react": "^0.10.2",
     "@noble/ed25519": "^1.7.1",
     "@solana/pay": "^0.2.5",
+    "@solana/spl-token": "^0.4.8",
     "@solana/wallet-adapter-base": "^0.9.22",
     "@solana/wallet-adapter-react": "^0.15.32",
     "@solana/wallet-adapter-react-ui": "^0.9.31",
@@ -41,6 +43,7 @@
     "react": "^18.2.0",
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
+    "react-countdown": "^2.3.6",
     "react-dom": "^18.2.0",
     "zustand": "^3.6.9"
   },
@@ -52,7 +55,7 @@
     "eslint-config-next": "^13.1.5",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.2.4",
-    "typescript": "^4.9.4"
+    "typescript": "^5.6.2"
   },
   "engines": {
     "node": ">=16"

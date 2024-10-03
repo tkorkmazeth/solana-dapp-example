@@ -15,14 +15,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "verbatimModuleSyntax": false
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", ".next",],
   "ts-node": {
     "require": ["tsconfig-paths/register"],
     "compilerOptions": {
-      "module": "commonjs"
+      "module": "esnext"
     }
   }
 }
