@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useEffect, useId } from "react";
+import React, { useState, useId } from "react";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
-import { Button } from "@headlessui/react";
+import Button from "./Button";
 
 const WalletInput = ({ source }: { source: string }) => {
   const [inputValue, setInputValue] = useState<string>(""); // State for the input field value
@@ -104,7 +104,7 @@ const WalletInput = ({ source }: { source: string }) => {
         value={inputValue}
         onChange={handleInputChange}
       />
-      {/* @ts-ignore */}
+
       <Button type="submit" isLoading={isLoading} disabled={!isValid} arrow />
       <div className="absolute inset-0 -z-10 rounded-full ring-offset-0 transition duration-200 ease-in-out peer-focus:ring-1 peer-focus:ring-primary" />
       <div className="bg-white/2.5 absolute inset-0 -z-10 rounded-full ring-1 ring-white/50" />
