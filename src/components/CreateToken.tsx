@@ -67,7 +67,7 @@ export const CreateToken: FC = () => {
           uses: null,
           collection: null,
         },
-        isMutable: false,
+        isMutable: true,
         collectionDetails: null,
       })
         .setBlockhash(recentBlockhash)
@@ -112,7 +112,7 @@ export const CreateToken: FC = () => {
         signers: [mintKeypair],
       });
     },
-    [publicKey, connection, sendTransaction]
+    [publicKey, connection, sendTransaction, recentBlockhash]
   );
 
   return (

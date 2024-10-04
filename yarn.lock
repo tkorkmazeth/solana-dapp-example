@@ -871,7 +871,7 @@
     mime-types "^2.1.34"
     near-seed-phrase "^0.2.0"
 
-"@irys/sdk@^0.2.10":
+"@irys/sdk@^0.2.10", "@irys/sdk@^0.2.11":
   version "0.2.11"
   resolved "https://registry.npmjs.org/@irys/sdk/-/sdk-0.2.11.tgz"
   integrity sha512-z3zKlKYEqRHuCGyyVoikL1lT4Jwt8wv7e4MrMThNfhfT/bdKQHD9lEVsX77DBnLJrBBKKg5rRcEzMtVkpNx3QA==
@@ -1625,15 +1625,15 @@
   resolved "https://registry.npmjs.org/@noble/ed25519/-/ed25519-1.7.3.tgz"
   integrity sha512-iR8GBkDt0Q3GyaVcIu7mSsVIqnFbkbRzGLWlvhwunacoLwt4J3swfKhfaM6rN6WY+TBGoYT1GtT1mIh2/jGbRQ==
 
-"@noble/hashes@^1.1.3", "@noble/hashes@^1.2.0", "@noble/hashes@^1.3.1", "@noble/hashes@^1.4.0", "@noble/hashes@~1.5.0", "@noble/hashes@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.5.0.tgz"
-  integrity sha512-1j6kQFb7QRru7eKN3ZDvRcP13rugwdxZqCjbiAVZfIJwgj2A65UmT4TgARXGlXgnRkORLTDTrO19ZErt7+QXgA==
-
-"@noble/hashes@~1.1.1", "@noble/hashes@1.1.3":
+"@noble/hashes@^1.1.3", "@noble/hashes@~1.1.1", "@noble/hashes@1.1.3":
   version "1.1.3"
   resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.1.3.tgz"
   integrity sha512-CE0FCR57H2acVI5UOzIGSSIYxZ6v/HOhDR0Ro9VLyhnzLwx0o8W1mmgaqlEUx4049qJDlIBRztv5k+MM8vbO3A==
+
+"@noble/hashes@^1.2.0", "@noble/hashes@^1.3.1", "@noble/hashes@^1.4.0", "@noble/hashes@~1.5.0", "@noble/hashes@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.5.0.tgz"
+  integrity sha512-1j6kQFb7QRru7eKN3ZDvRcP13rugwdxZqCjbiAVZfIJwgj2A65UmT4TgARXGlXgnRkORLTDTrO19ZErt7+QXgA==
 
 "@noble/hashes@~1.3.0":
   version "1.3.3"
@@ -4123,7 +4123,16 @@ axios@^0.27.2:
     follow-redirects "^1.14.9"
     form-data "^4.0.0"
 
-axios@^1.4.0, axios@^1.6.7:
+axios@^1.4.0:
+  version "1.7.7"
+  resolved "https://registry.npmjs.org/axios/-/axios-1.7.7.tgz"
+  integrity sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==
+  dependencies:
+    follow-redirects "^1.15.6"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
+
+axios@^1.6.7:
   version "1.7.7"
   resolved "https://registry.npmjs.org/axios/-/axios-1.7.7.tgz"
   integrity sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==

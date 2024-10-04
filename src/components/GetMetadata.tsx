@@ -6,7 +6,7 @@ import {
   JsonMetadata,
   MPL_TOKEN_METADATA_PROGRAM_ID,
 } from "@metaplex-foundation/mpl-token-metadata";
-import { RpcAccount } from "@metaplex-foundation/umi";
+import { publicKey, RpcAccount, SolAmount } from "@metaplex-foundation/umi";
 
 export const GetMetadata: FC = () => {
   const { connection } = useConnection();
@@ -19,8 +19,6 @@ export const GetMetadata: FC = () => {
     async (form) => {
       try {
         const tokenMint = new PublicKey(form.tokenAddress);
-
-        // Find Metadata PDA
         const [metadataPDA] = PublicKey.findProgramAddressSync(
           [
             Buffer.from("metadata", "utf8"),
@@ -40,10 +38,23 @@ export const GetMetadata: FC = () => {
           return;
         }
 
+        const lamports: SolAmount = {
+          basisPoints: BigInt(tokenMetaDataAccount.lamports),
+          identifier: "SOL",
+          decimals: 9,
+        };
+        const rawAccount: RpcAccount = {
+          publicKey: publicKey(metadataPDA.toString()),
+          data: tokenMetaDataAccount.data,
+          executable: tokenMetaDataAccount.executable,
+          owner: publicKey(tokenMetaDataAccount.owner),
+          lamports: lamports,
+          rentEpoch: BigInt(tokenMetaDataAccount.rentEpoch),
+        };
+
         // Deserialize metadata
-        const decodedMetadata = deserializeMetadata(
-          tokenMetaDataAccount.data as unknown as RpcAccount
-        );
+        const decodedMetadata = deserializeMetadata(rawAccount);
+        console.log("METADATA", decodedMetadata);
 
         if (!decodedMetadata) {
           console.log("Failed to decode metadata");
