@@ -1,11 +1,12 @@
 import { FC, useState, Fragment, useEffect } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+
 import { useWallet } from "@solana/wallet-adapter-react";
 
 import { WebIrys } from "@irys/sdk";
 
 import { notify } from "../utils/notifications";
+import { CheckIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const bundlers = [
   { id: 1, network: "mainnet-beta", name: "https://node1.irys.xyz" },
@@ -195,7 +196,7 @@ export const UploadMetadata: FC = ({}) => {
                           {!selected ? "Select Network" : selected.network}
                         </span>
                         <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                          <SelectorIcon
+                          <ChevronDownIcon
                             className="h-5 w-5 text-gray-400"
                             aria-hidden="true"
                           />

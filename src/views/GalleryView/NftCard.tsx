@@ -1,6 +1,7 @@
+import { EyeSlashIcon } from "@heroicons/react/24/outline";
 import { FC, useState, useEffect } from "react";
 import useSWR from "swr";
-import { EyeOffIcon } from "@heroicons/react/outline";
+
 import { fetcher } from "utils/fetcher";
 
 type Props = {
@@ -51,7 +52,7 @@ export const NftCard: FC<Props> = ({
           // Fallback when preview isn't available
           // This could be broken image, video, or audio
           <div className="w-auto h-48 flex items-center justify-center bg-gray-900 bg-opacity-40">
-            <EyeOffIcon className="h-16 w-16 text-white-500" />
+            <EyeSlashIcon className="h-16 w-16 text-white-500" />
           </div>
         )}
       </figure>

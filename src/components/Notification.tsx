@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
+
+import useNotificationStore from "../stores/useNotificationStore";
+import { useConnection } from "@solana/wallet-adapter-react";
+import { useNetworkConfiguration } from "contexts/NetworkConfigurationProvider";
 import {
   CheckCircleIcon,
   InformationCircleIcon,
   XCircleIcon,
-} from '@heroicons/react/outline'
-import { XIcon } from '@heroicons/react/solid'
-import useNotificationStore from '../stores/useNotificationStore'
-import { useConnection } from '@solana/wallet-adapter-react';
-import { getExplorerUrl } from '../utils/explorer'
-import { useNetworkConfiguration } from 'contexts/NetworkConfigurationProvider';
+} from "@heroicons/react/24/outline";
+import { XCircleIcon as XIcon } from "@heroicons/react/24/solid";
 
 const NotificationList = () => {
   const { notifications, set: setNotificationStore } = useNotificationStore(
     (s) => s
-  )
+  );
 
-  const reversedNotifications = [...notifications].reverse()
+  const reversedNotifications = [...notifications].reverse();
 
   return (
     <div
@@ -43,20 +43,19 @@ const NotificationList = () => {
       </div>
     </div>
   );
-}
+};
 
 const Notification = ({ type, message, description, txid, onHide }) => {
   const { connection } = useConnection();
   const { networkConfiguration } = useNetworkConfiguration();
 
-  // TODO: we dont have access to the network or endpoint here.. 
+  // TODO: we dont have access to the network or endpoint here..
   // getExplorerUrl(connection., txid, 'tx')
   // Either a provider, context, and or wallet adapter related pro/contx need updated
 
-
   useEffect(() => {
     const id = setTimeout(() => {
-      onHide()
+      onHide();
     }, 8000);
 
     return () => {
@@ -68,16 +67,18 @@ const Notification = ({ type, message, description, txid, onHide }) => {
     <div
       className={`max-w-sm w-full bg-bkg-1 shadow-lg rounded-md mt-2 pointer-events-auto ring-1 ring-black ring-opacity-5 p-2 mx-4 mb-12 overflow-hidden`}
     >
-      <div className={`p-4 rounded-md bg-gradient-to-r from-purple-900 from-10% via-purple-600 via-30% to-emerald-500 to-90%`}>
+      <div
+        className={`p-4 rounded-md bg-gradient-to-r from-purple-900 from-10% via-purple-600 via-30% to-emerald-500 to-90%`}
+      >
         <div className={`flex items-center`}>
           <div className={`flex-shrink-0`}>
-            {type === 'success' ? (
+            {type === "success" ? (
               <CheckCircleIcon className={`h-8 w-8 mr-1 text-green`} />
             ) : null}
-            {type === 'info' && <InformationCircleIcon className={`h-8 w-8 mr-1 text-red`} />}
-            {type === 'error' && (
-              <XCircleIcon className={`h-8 w-8 mr-1`} />
+            {type === "info" && (
+              <InformationCircleIcon className={`h-8 w-8 mr-1 text-red`} />
             )}
+            {type === "error" && <XCircleIcon className={`h-8 w-8 mr-1`} />}
           </div>
           <div className={`ml-2 w-0 flex-1`}>
             <div className={`font-bold text-fgd-1`}>{message}</div>
@@ -86,15 +87,32 @@ const Notification = ({ type, message, description, txid, onHide }) => {
             ) : null}
             {txid ? (
               <div className="flex flex-row">
-         
                 <a
-                  href={'https://explorer.solana.com/tx/' + txid + `?cluster=${networkConfiguration}`}
+                  href={
+                    "https://explorer.solana.com/tx/" +
+                    txid +
+                    `?cluster=${networkConfiguration}`
+                  }
                   target="_blank"
                   rel="noreferrer"
                   className="flex flex-row link link-accent text-emerald-200"
                 >
-                  <svg className="flex-shrink-0 h-4 ml-2 mt-0.5 text-primary-light w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" ><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                  <div className="flex mx-4">{txid.slice(0, 8)}...
+                  <svg
+                    className="flex-shrink-0 h-4 ml-2 mt-0.5 text-primary-light w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    ></path>
+                  </svg>
+                  <div className="flex mx-4">
+                    {txid.slice(0, 8)}...
                     {txid.slice(txid.length - 8)}
                   </div>
                 </a>
@@ -113,7 +131,7 @@ const Notification = ({ type, message, description, txid, onHide }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NotificationList
+export default NotificationList;
