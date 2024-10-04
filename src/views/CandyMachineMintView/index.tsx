@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import * as anchor from "@coral-xyz/anchor";
 
@@ -7,6 +7,9 @@ import { SolanaLogo } from "components";
 import { MintSection } from "./MintSection";
 import { config } from "./config";
 import styles from "./index.module.css";
+import useUserSOLBalanceStore from "stores/useUserSOLBalanceStore";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import useConnectionStore from "stores/useConnectionStore";
 
 const treasury = new anchor.web3.PublicKey(config.TREASURY_ADDRESS!);
 
@@ -21,6 +24,19 @@ const startDateSeed = parseInt(process.env.REACT_APP_CANDY_START_DATE!, 10);
 const txTimeout = 30000;
 
 export const CandyMachineMintView: FC = ({}) => {
+  const wallet = useWallet();
+  const { connection } = useConnection();
+
+  const { getUserSOLBalance } = useUserSOLBalanceStore();
+  const { getRecentBlockhash } = useConnectionStore();
+
+  useEffect(() => {
+    if (wallet.publicKey) {
+      console.log(wallet.publicKey.toBase58());
+      getUserSOLBalance(wallet.publicKey, connection);
+      getRecentBlockhash(connection);
+    }
+  }, [wallet.publicKey, connection, getUserSOLBalance]);
   return (
     <div className="container mx-auto max-w-6xl p-8 2xl:px-0">
       <div className={styles.container}>
@@ -49,14 +65,14 @@ export const CandyMachineMintView: FC = ({}) => {
         </div>
 
         <div className="text-center pt-2">
-          <div className="hero min-h-16 py-20">
+          <div className="hero ">
             <div className="text-center hero-content">
               <div className="max-w-lg">
                 <h1 className="mb-5 text-5xl">
                   Candy Machine Mint UI <SolanaLogo />
                 </h1>
 
-                <p className="mb-5">
+                {/* <p className="mb-5">
                   Here is very basic example of minting site. <br />
                   It uses{" "}
                   <a
@@ -68,9 +84,9 @@ export const CandyMachineMintView: FC = ({}) => {
                     exiled-apes/candy-machine-mint
                   </a>{" "}
                   code migrated to be used with Next.JS app.
-                </p>
+                </p> */}
 
-                <p>UI connects to DEVNET network.</p>
+                {/* <p>UI connects to DEVNET network.</p> */}
               </div>
             </div>
           </div>
@@ -83,39 +99,6 @@ export const CandyMachineMintView: FC = ({}) => {
               treasury={treasury}
               txTimeOut={txTimeout}
             />
-          </div>
-
-          <div className="max-w-xl mx-auto">
-            <h1 className="mb-5 mt-16 text-5xl">Description:</h1>
-
-            <p>
-              You can test this Candy Machine mint on Devnet.
-              <br />
-              Switch to Devnet in <code>src/pages/_app.tsx</code> file. And run
-              app locally.
-            </p>
-            <br />
-            <p>
-              Edit <code>src/views/CandyMachineMintView/config.ts</code> to use
-              your own Candy Machine.
-              <br /> You can read details about variables on{" "}
-              <a
-                href="https://github.com/exiled-apes/candy-machine-mint#environment-variables"
-                target="_blank"
-                rel="noreferrer"
-                className="link hover:underline"
-              >
-                exiled-apes/candy-machine-mints Github
-              </a>
-            </p>
-            <br />
-            <p>
-              Always set custom RPC server for the final mint site. <br />
-              You can do it here: <code>src/pages/_app.tsx</code>
-              <br />
-              Otherwise, Solana can ban your website for overusing RPC server.
-              You dont want it in the middle of your mint 😳
-            </p>
           </div>
         </div>
       </div>

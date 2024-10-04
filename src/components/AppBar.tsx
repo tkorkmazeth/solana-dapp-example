@@ -12,9 +12,45 @@ const WalletMultiButtonDynamic = dynamic(
   { ssr: false }
 );
 
-export const AppBar: React.FC = () => {
+const categories = [
+  {
+    name: "Token",
+    links: [
+      { href: "/token", label: "Create Token" },
+      { href: "/upload", label: "Upload Metadata" },
+      { href: "/update", label: "Update Metadata" },
+      { href: "/metadata", label: "Read Metadata" },
+    ],
+  },
+  {
+    name: "Solana Pay",
+    links: [
+      { href: "/transfer", label: "Transfer Sol" },
+      { href: "/transaction", label: "Transaction" },
+    ],
+  },
+  {
+    name: "NFT",
+    links: [
+      { href: "/mint", label: "Mint From Candy Machine" },
+      { href: "/gallery", label: "NFT Gallery" },
+    ],
+  },
+  {
+    name: "Basics",
+    links: [{ href: "/basics", label: "Basic Actions" }],
+  },
+];
+
+export const AppBar: FC = () => {
   const { autoConnect, setAutoConnect } = useAutoConnect();
+  const [dropdownOpen, setDropdownOpen] = useState<number | null>(null);
   const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleDropdown = (index: number) => {
+    setDropdownOpen(dropdownOpen === index ? null : index); // Toggle dropdown on click
+  };
+
   return (
     <div>
       {/* NavBar / Header */}
@@ -91,20 +127,37 @@ export const AppBar: React.FC = () => {
           {/* <WalletMultiButtonDynamic className="btn-ghost btn-sm relative flex md:hidden text-lg " /> */}
         </div>
 
-        {/* Nav Links */}
-        {/* Wallet & Settings */}
+        <div className="flex space-x-4">
+          {categories.map((category, index) => (
+            <div key={index} className="relative">
+              <button
+                onClick={() => toggleDropdown(index)}
+                className="text-white hover:text-secondary focus:outline-none"
+              >
+                {category.name}
+              </button>
+              {dropdownOpen === index && (
+                <div className="absolute left-0 mt-2 bg-gray-800 text-white rounded shadow-lg z-20">
+                  <div className="flex flex-col p-2">
+                    {category.links.map((link, linkIndex) => (
+                      <Link
+                        key={linkIndex}
+                        href={link.href}
+                        onClick={() => toggleDropdown(index)}
+                        className="block px-4 py-2 hover:bg-gray-700"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
         <div className="navbar-end">
           <div className="hidden md:inline-flex align-items-center justify-items gap-6">
-            <NavElement
-              label="Home"
-              href="/"
-              navigationStarts={() => setIsNavOpen(false)}
-            />
-            <NavElement
-              label="Basics"
-              href="/basics"
-              navigationStarts={() => setIsNavOpen(false)}
-            />
             <WalletMultiButtonDynamic className="btn-ghost btn-sm rounded-btn text-lg mr-6 " />
           </div>
           <label

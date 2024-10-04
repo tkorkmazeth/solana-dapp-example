@@ -177,7 +177,7 @@ export const MintSection = (props: MintSectionProps) => {
             <button
               disabled={isSoldOut || isLoading || !isActive}
               onClick={mint}
-              className="btn btn-primary btn-wide btn-lg"
+              className="btn btn-secondary btn-wide btn-lg"
             >
               {isSoldOut ? (
                 "SOLD OUT"
