@@ -143,6 +143,7 @@ const NFTDetails = ({ searchParams, walletAddress, nftData }: NFTDetails) => {
                             </dt>
 
                             <dd className="font-base mt-2 text-xl tracking-tight text-white">
+                              {/* @ts-ignore */}
                               {value !== (null || undefined) ? (
                                 typeof value === "string" ? (
                                   <a
@@ -296,6 +297,7 @@ const NFTDetails = ({ searchParams, walletAddress, nftData }: NFTDetails) => {
                                 {key}
                               </dt>
                               <dd className="font-base mt-2 text-xl tracking-tight text-white">
+                                {/* @ts-ignore */}
                                 {value !== (null || undefined) ? (
                                   key === "authority" ||
                                   key == "inscriptionDataAccount" ? (

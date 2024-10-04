@@ -23,7 +23,7 @@ const categories = [
     ],
   },
   {
-    name: "Solana Pay",
+    name: "SolanaPay",
     links: [
       { href: "/transfer", label: "Transfer Sol" },
       { href: "/transaction", label: "Transaction" },
@@ -39,6 +39,10 @@ const categories = [
   {
     name: "Basics",
     links: [{ href: "/basics", label: "Basic Actions" }],
+  },
+  {
+    name: "Helius",
+    links: [{ href: "/galleria", label: "Galleria" }],
   },
 ];
 
@@ -156,9 +160,9 @@ export const AppBar: FC = () => {
           ))}
         </div>
 
-        <div className="navbar-end">
+        <div className="navbar-end  align-items-center justify-items gap-6">
           <div className="hidden md:inline-flex align-items-center justify-items gap-6">
-            <WalletMultiButtonDynamic className="btn-ghost btn-sm rounded-btn text-lg mr-6 " />
+          <WalletMultiButtonDynamic className="btn-ghost btn-xs rounded-full text-sm mr-4 px-4 py-2" />
           </div>
           <label
             htmlFor="my-drawer"

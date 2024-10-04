@@ -61,6 +61,7 @@ const NFTTable = ({ walletAddress, nftDataArray }: NFTTableProps) => {
 
   const clearFilters = () => {
     // Create a new instance of URLSearchParams
+    //@ts-ignore
     const newSearchParams = new URLSearchParams(searchParams);
     // Delete the 'collection' parameter
     newSearchParams.delete("collection");

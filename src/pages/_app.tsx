@@ -6,10 +6,17 @@ import { AppBar } from "../components/AppBar";
 import { ContentContainer } from "../components/ContentContainer";
 import { Footer } from "../components/Footer";
 import Notifications from "../components/Notification";
+import { useRouter } from "next/router"; // Import useRouter
+
 require("@solana/wallet-adapter-react-ui/styles.css");
 require("../styles/globals.css");
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
+  const router = useRouter();
+  
+  // Check if the current route matches `/portfolio/[walletAddress]`
+  const isPortfolioRoute = router.pathname.startsWith("/portfolio/[walletAddress]");
+
   return (
     <>
       <Head>
@@ -22,7 +29,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           <AppBar />
           <ContentContainer>
             <Component {...pageProps} />
-            <Footer />
+            {!isPortfolioRoute && <Footer />} 
           </ContentContainer>
         </div>
       </ContextProvider>

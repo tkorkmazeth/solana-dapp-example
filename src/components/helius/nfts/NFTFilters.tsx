@@ -30,6 +30,7 @@ const NFTFilters = ({ nftDataArray }: NFTFiltersProps) => {
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
+      //@ts-ignore
       const params = new URLSearchParams(searchParams);
       params.set(name, value);
       return params.toString();
@@ -49,6 +50,7 @@ const NFTFilters = ({ nftDataArray }: NFTFiltersProps) => {
   const handleNoFilter = (type: string) => {
     if (type === "collection") {
       // Create a new instance of URLSearchParams
+      //@ts-ignore
       const newSearchParams = new URLSearchParams(searchParams);
       // Delete the 'collection' parameter
       newSearchParams.delete("collection");
@@ -58,6 +60,7 @@ const NFTFilters = ({ nftDataArray }: NFTFiltersProps) => {
       router.push(newURL);
     } else if (type === "type") {
       // Create a new instance of URLSearchParams
+      //@ts-ignore
       const newSearchParams = new URLSearchParams(searchParams);
       // Delete the 'type' parameter
       newSearchParams.delete("type");

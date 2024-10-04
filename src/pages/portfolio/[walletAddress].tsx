@@ -1,4 +1,9 @@
-import { TokenDetails, TokenMetrics, TokensList } from "components/helius";
+import {
+  Navigation,
+  TokenDetails,
+  TokenMetrics,
+  TokensList,
+} from "components/helius";
 import NFTDetails from "components/helius/nfts/NFTDetails";
 import NFTList from "components/helius/nfts/NFTList";
 import NFTMetrics from "components/helius/nfts/NFTMetrics";
@@ -18,7 +23,6 @@ const PortfolioPage = () => {
 
   useEffect(() => {
     if (walletAddress) {
-      // Fetch assets only when walletAddress is available
       getAllAssets(walletAddress as string)
         .then(({ fungibleTokens, nonFungibleTokens }) => {
           setFungibleTokens(fungibleTokens);
@@ -38,10 +42,15 @@ const PortfolioPage = () => {
       details: Array.isArray(router.query.details)
         ? router.query.details[0]
         : router.query.details || "",
+      tokenDetails: Array.isArray(router.query.tokenDetails)
+        ? router.query.tokenDetails[0]
+        : router.query.tokenDetails || "",
     };
 
     setSearchParams(params);
   }, [router.query]);
+
+  console.log("SEARCHPARAMSPage", searchParams);
 
   if (!walletAddress) {
     return <div>Loading...</div>;
@@ -50,6 +59,9 @@ const PortfolioPage = () => {
   return (
     <div className="h-screen bg-radial-gradient">
       <div className="lg:pl-20">
+        {/* Navigation (Mobile / Side / Primary) */}
+        {/* @ts-ignore */}
+        <Navigation searchParams={searchParams} params={router.query} />
         <main>
           <div className="px-6 py-6">
             {/* Tokens */}
@@ -59,7 +71,7 @@ const PortfolioPage = () => {
                   <div className="h-4/5 w-10/12 sm:w-2/3">
                     <TokenDetails
                       tokenData={fungibleTokens.filter(
-                        (item) => item.id === searchParams.details
+                        (item) => item.id === searchParams.tokenDetails
                       )}
                       //@ts-ignore
                       searchParams={searchParams}

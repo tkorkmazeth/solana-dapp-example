@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import Link from "next/link";
+import { LinkIcon } from "@heroicons/react/24/outline";
 import { FungibleToken, MintExtensions } from "models";
 
 type MintExtensionValue = string | number | boolean | NestedMintExtensionObject;
@@ -19,6 +20,8 @@ const TokenDetails = ({
   walletAddress,
   tokenData,
 }: TokenDetailsProps) => {
+  console.log("TOKENDATA", tokenData);
+
   const imageSrc = tokenData[0]?.content?.links?.image || "/noImg.svg";
   const title = tokenData[0]?.content?.metadata.name;
   const mint = tokenData[0].id;
@@ -155,7 +158,7 @@ const TokenDetails = ({
                       }/${detail.value}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center text-primary transition-colors duration-200 ease-in-out hover:text-white"
+                      className="flex items-center text-secondary transition-colors duration-200 ease-in-out hover:text-white"
                     >
                       {`${detail.value.slice(0, 3)}...${detail.value.slice(
                         -4
