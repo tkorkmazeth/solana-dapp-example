@@ -45,6 +45,27 @@ module.exports = {
           'warning': '#ff9900',           /* Warning */
           'error': '#ff5724',             /* Error */
         },
+        Helius: {
+          primary: "#E4552E",
+
+          secondary: "#a03b20",
+
+          accent: "#ffaf99",
+
+          neutral: "#454549",
+
+          "neutral-2": "#5F5F5F",
+
+          "base-100": "#222222",
+
+          info: "#008ce5",
+
+          success: "#84cc16",
+
+          warning: "#fb923c",
+
+          error: "#dc2626",
+        },
       },
       // backup themes:
       // 'dark',
