@@ -62,7 +62,7 @@ export const RequestAirdrop: FC = () => {
           className="px-8 m-2 btn animate-pulse bg-gradient-to-br from-indigo-500 to-fuchsia-500 hover:from-white hover:to-purple-300 text-black"
           onClick={onClick}
         >
-          <span>Recieve 1 Sol on Devnet</span>
+          <span>Receive 1 Sol on Devnet</span>
         </button>
       </div>
     </div>

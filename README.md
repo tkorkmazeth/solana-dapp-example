@@ -139,3 +139,4 @@ This project references the following open-source projects:
 - [Token Creator](https://github.com/jacobcreech/Token-Creator)
 - [Create dApp Solana NextJs](https://github.com/thuglabs/create-dapp-solana-nextjs)
 - [Solana Pay Scaffold](https://github.com/anza-xyz/solana-pay-scaffold)
+- [Helius Galleria](https://github.com/helius-labs/galleria)
