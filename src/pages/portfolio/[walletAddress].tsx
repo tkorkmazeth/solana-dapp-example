@@ -50,8 +50,6 @@ const PortfolioPage = () => {
     setSearchParams(params);
   }, [router.query]);
 
-  console.log("SEARCHPARAMSPage", searchParams);
-
   if (!walletAddress) {
     return <div>Loading...</div>;
   }
@@ -84,7 +82,7 @@ const PortfolioPage = () => {
 
             {/* NFTs */}
             <div>
-              {searchParams.details && (
+              {searchParams.details && nonFungibleTokens.length > 0 && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-700 bg-opacity-70">
                   <div className="h-4/5 w-10/12 sm:w-2/3">
                     <NFTDetails

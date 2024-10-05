@@ -9,12 +9,14 @@ interface NFTDetails {
 }
 
 const NFTDetails = ({ searchParams, walletAddress, nftData }: NFTDetails) => {
+  console.log("NFTDATA", nftData);
+
   const imageSrc = nftData[0]?.content?.links?.image || "/noImg.svg";
-  const title = nftData[0].content.metadata.name;
-  const description = nftData[0].content.metadata.description;
-  const mint = nftData[0].id;
-  const ownerAddress = nftData[0].ownership.owner;
-  const royaltyPercentage = nftData[0].royalty.percent;
+  const title = nftData[0]?.content?.metadata?.name;
+  const description = nftData[0]?.content?.metadata?.description;
+  const mint = nftData[0]?.id;
+  const ownerAddress = nftData[0]?.ownership?.owner;
+  const royaltyPercentage = nftData[0]?.royalty?.percent;
 
   const nftDetails = [
     { type: "Mint", value: mint },
